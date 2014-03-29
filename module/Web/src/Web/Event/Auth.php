@@ -10,7 +10,7 @@ use Zend\Permissions\Acl\Resource\GenericResource;
 class Auth extends MvcEvent
 {
     const ROLE_GUEST='guest';
-    protected $debug = true;
+    protected $debug = false;
 
     protected function log($msg)
     {
