@@ -94,7 +94,7 @@ class Auth extends MvcEvent
         foreach($userRoles as $userRole)
         {
             try{
-                $isAllowed = $e -> getViewModel() -> acl -> isAllowed($userRole['group'], $route);
+                $isAllowed = $e -> getViewModel() -> acl -> isAllowed($userRole['name'], $route);
                 $response = $e -> getResponse();
                 if($isAllowed)
                 {
@@ -152,7 +152,7 @@ class Auth extends MvcEvent
             $userRoles = $id->getGroups();
         }
         if($authAdapter->hasIdentity() !== true || count($userRoles)==0 ) {
-            $userRoles[] = array('group'=>self::ROLE_GUEST);
+            $userRoles[] = array('name'=>self::ROLE_GUEST);
         }
         $this->log("userroles: ".var_export($userRoles,true));
         return $userRoles;
