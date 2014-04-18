@@ -22,16 +22,18 @@
 
     </head>
     <body id="id_body">
-    <div id="content">
-        <div id="div_header">
-            <a href="<?php echo $this->url('web-home');?>" style="float:left">Home</a>
-            <a href="index.php" style="float:left">Help</a>
-            <a href="" style="float:right">Logout</a>
-        </div>
-        <div id="div_menu">
-            <h1>IP-Verwaltung</h1>
-            <?php echo $this->navigation('navigation')->menu()->setUlClass('navigation'); ?>
-        </div>
+        <div id="content">
+            <?php if($this->Identity() !== NULL) { ?>
+            <div id="div_header">
+                <a href="<?php echo $this->url('web-home');?>" style="float:left">Home</a>
+                <!--<a href="index.php" style="float:left">Help</a>-->
+                <a href="" style="float:right">Logout</a>
+            </div>
+            <div id="div_menu">
+                <h1>IP-Verwaltung</h1>
+                <?php echo $this->navigation('navigation')->menu()->setUlClass('navigation');  ?>
+            </div>
+            <?php } ?>
             <?php echo $this->content; ?>
         </div>
 
