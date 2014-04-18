@@ -39,4 +39,11 @@ class AuthController extends AbstractActionController
 
         return array('form' => $form,'message' => $message);
     }
+    public function logoutAction()
+    {
+        $as = $this->serviceLocator->get('Web\Auth\Service');
+        $as->getStorage()->forgetMe();
+        $as->clearIdentity();
+        return $this->redirect($this->url('web-auth-login'));
+    }
 }

@@ -4,7 +4,7 @@ use Zend\Session\Container;
 
 use Zend\Authentication\Adapter\DbTable as AuthAdapter;
 use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Storage\Session as SessionStorage;
+use Web\Storage\Auth as SessionStorage;
 
 return array(
     'navigation' => array(
@@ -41,6 +41,16 @@ return array(
                     'defaults' => array(
                         'controller' => 'Web\Controller\Auth',
                         'action' => 'login',
+                    ),
+                ),
+            ),
+            'web-auth-logout' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route' => '/logout',
+                    'defaults' => array(
+                        'controller' => 'Web\Controller\Auth',
+                        'action' => 'logout',
                     ),
                 ),
             ),
