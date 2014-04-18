@@ -94,7 +94,7 @@ class Auth extends MvcEvent
         foreach($userRoles as $userRole)
         {
             try{
-                $isAllowed = $e -> getViewModel() -> acl -> isAllowed($userRole['name'], $route);
+                $isAllowed = $e -> getViewModel() -> acl -> isAllowed($userRole['group'], $route);
                 $response = $e -> getResponse();
                 if($isAllowed)
                 {
