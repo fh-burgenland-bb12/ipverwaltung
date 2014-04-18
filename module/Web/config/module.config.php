@@ -75,6 +75,7 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+            'Zend\Authentication\AuthenticationService' => 'Web\Auth\Service',
         ),
         'initializers' => array(
             function ($instance, $sm) {
@@ -83,8 +84,18 @@ return array(
                 }
             }
         ),
+        'invokeables' => array(
+            //'AuthService' => 'Zend\Authentication\AuthenticationService',
+
+        ),
+        'services' => array(
+            'SessionManager' => 'Zend\Session\SessionManager',
+            'Auth' => 'Web\Auth\Service',
+            'AuthService' => 'Web\Auth\Service',
+        ),
         'factories' => array(
             'navigation' => 'Web\Navigation\Factory',
+            //'Zend\Authentication\AuthenticationService' => 'Zend\Authentication\AuthenticationService',
             //'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
             'Zend\Session\SessionManager' => function ($sm) {
                 $config = $sm->get('config');
