@@ -130,7 +130,7 @@ class Auth extends MvcEvent
                 $response -> setStatusCode(302);
             }
         }
-        if($redirect)
+        if(isset($redirect))
         {
             $controller = $e->getTarget();
             $controller->redirect()->toUrl($redirect);
