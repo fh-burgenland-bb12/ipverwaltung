@@ -1,0 +1,22 @@
+<h1><?php echo $this->listname;?></h1>
+<?php
+?>
+<table>
+    <tr>
+        <?php
+        foreach($this->headline as $head)
+            echo "\t\t\t<th>$head</th>\n";
+        ?>
+    </tr>
+    <?php
+    foreach($this->table as $row)
+    {
+        echo "\t\t<tr>\n";
+        foreach($row as $col)
+        {
+            echo "\t\t\t<td>$col</td>\n";
+        }
+        echo "\t\t</tr>\n";
+    }
+?>
+</table>
