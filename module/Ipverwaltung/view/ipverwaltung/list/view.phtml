@@ -1,13 +1,21 @@
 <h1><?php echo $this->listname;?></h1>
 <?php
+$this->headScript()->appendFile($this->basePath() . '/media/js/jquery.dataTables.js');
+$this->headLink()
+    ->appendStylesheet($this->basePath() . '/media/css/jquery.dataTables.css','screen')
+    ->appendStylesheet($this->basePath() . '/media/css/demo_table.css','screen')
+;
 ?>
-<table>
+<table class="datatable">
+    <thead>
     <tr>
         <?php
         foreach($this->headline as $head)
             echo "\t\t\t<th>$head</th>\n";
         ?>
     </tr>
+    </thead>
+    <tbody>
     <?php
     foreach($this->table as $row)
     {
@@ -19,4 +27,11 @@
         echo "\t\t</tr>\n";
     }
 ?>
+    </tbody>
 </table>
+
+<script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+    $('.datatable').dataTable();
+    } );
+</script>
