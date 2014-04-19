@@ -11,12 +11,12 @@ return array(
         'default' => array(
             array(
                 'label' => 'Listen',
-                'route' => 'web-list-index',
+                'route' => 'ipverwaltung-list-view',
                 'pages' => array(
                     array(
                         'label' => 'Übersicht',
-                        'route' => 'web-list-overview',
-                        'resource' => 'mvc:web-list-overview',
+                        'route' => 'ipverwaltung-list-view',
+                        'resource' => 'mvc:ipverwaltung-list-view',
                     ),
                 ),
             ),
