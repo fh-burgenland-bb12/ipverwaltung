@@ -14,6 +14,9 @@ class ListController extends AbstractActionController
 
         $return = array();
         $return['listname'] = $type;
-        $return['table'] = $datatable->fetchAll();
+        $return['table'] = $datatable->fetchAll()->toArray();
+        $return['headline'] = array_keys(current($return['table']));
+
+        return $return;
     }
 }
