@@ -15,7 +15,7 @@ class ListController extends AbstractActionController
         $return = array();
         $return['listname'] = $type;
         $return['table'] = $datatable->fetchAll()->toArray();
-        $return['headline'] = array_keys(current($return['table']));
+        $return['headline'] = array_keys($this->getServiceLocator()->get('Ipverwaltung\\Model\\'.$type.'\\'.$type)->toArray());
 
         return $return;
     }
