@@ -1,57 +1,40 @@
 <?php
-use Zend\Session\SessionManager;
-use Zend\Session\Container;
 
-use Zend\Authentication\Adapter\DbTable as AuthAdapter;
-use Zend\Authentication\AuthenticationService;
-use Zend\Authentication\Storage\Session as SessionStorage;
+use Zend\Db\ResultSet\ResultSet;
+use Zend\Db\TableGateway\TableGateway;
 
 return array(
-    'navigation' => array(
-        'default' => array(
-            array(
-                'label' => 'Listen',
-                'route' => 'web-list-index',
-                'pages' => array(
-                    array(
-                        'label' => 'Übersicht',
-                        'route' => 'web-list-overview',
-                        'resource' => 'mvc:web-list-overview',
-                    ),
-                ),
-            ),
-        ),
-    ),
     'router' => array(
         'routes' => array(
-            'web-home' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'ipverwaltung-data-edit' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/',
-                    'defaults' => array(
-                        'controller' => 'Web\Controller\Index',
-                        'action' => 'index',
+                    'route' => '/edit/:type[:id]',
+                    'constraints' => array(
+                        'type' => '(Accesspoint(Ip)?|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
+                        'id'   => '[0-9]+',
                     ),
-                ),
-            ),
-            'web-list-index' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/list',
                     'defaults' => array(
-                        'controller' => 'Web\Controller\List',
-                        'action' => 'index',
+                        'controller' => 'Ipverwaltung\Controller\Data',
+                        'action' => 'edit',
+                        'id' => 0,
                     ),
                 ),
             ),
 
-            'web-list-overview' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
+            'ipverwaltung-list-view' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/list/overview',
+                    'route' => '/view[/:type]',
+                    'constraints' => array(
+                        'type' => '(Accesspoint(Ip)?|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
+                        'id'   => '[0-9]+',
+                    ),
                     'defaults' => array(
-                        'controller' => 'Web\Controller\List',
-                        'action' => 'overview',
+                        'controller' => 'Ipverwaltung\Controller\List',
+                        'action' => 'view',
+                        'id' => 0,
+                        'type' => 'Standort',
                     ),
                 ),
             ),
@@ -322,9 +305,8 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Web\Controller\Index' => 'Web\Controller\IndexController',
-            'Web\Controller\Auth' => 'Web\Controller\AuthController',
-            'Web\Controller\List' => 'Web\Controller\ListController',
+            'Ipverwaltung\Controller\Data' => 'Ipverwaltung\Controller\DataController',
+            'Ipverwaltung\Controller\List' => 'Ipverwaltung\Controller\ListController',
         ),
     ),
     'view_manager' => array(
