@@ -54,28 +54,6 @@ return array(
                     ),
                 ),
             ),
-
-            'web-list-index' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/list',
-                    'defaults' => array(
-                        'controller' => 'Web\Controller\List',
-                        'action' => 'index',
-                    ),
-                ),
-            ),
-
-            'web-list-overview' => array(
-                'type' => 'Zend\Mvc\Router\Http\Literal',
-                'options' => array(
-                    'route' => '/list/overview',
-                    'defaults' => array(
-                        'controller' => 'Web\Controller\List',
-                        'action' => 'overview',
-                    ),
-                ),
-            ),
         ),
     ),
     'service_manager' => array(
