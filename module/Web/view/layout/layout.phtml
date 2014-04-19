@@ -34,6 +34,13 @@
                 <?php echo $this->navigation('navigation')->menu()->setUlClass('navigation');  ?>
             </div>
             <?php } ?>
+            <?php if (isset($flashMessages)) : ?>
+            <ul class="flash-messages">
+                <?php foreach ($flashMessages as $message) : ?>
+                <li> <?= $message; ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
             <?php echo $this->content; ?>
         </div>
 
