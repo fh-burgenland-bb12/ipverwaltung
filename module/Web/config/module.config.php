@@ -10,12 +10,109 @@ return array(
     'navigation' => array(
         'default' => array(
             array(
-                'label' => 'Listen',
+                'label' => 'Stammdaten',
                 'route' => 'ipverwaltung-list-view',
                 'pages' => array(
                     array(
-                        'label' => 'Übersicht',
+                        'label' => 'Accesspoint',
                         'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Accesspoint'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Accesspoint Ip\'s',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'AccesspointIp'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Ansprechpartner',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Ansprechpartner'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Firewall',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Firewall'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Firewall DHCP',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'FirewallDhcp'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Firewall Interface',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'FirewallInterface'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Firewall Interface IP\'s',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'FirewallInterfaceIp'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Firewall NAT',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'FirewallNat'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Firma',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Firma'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'IPsec',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Ipsec'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'ISP',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Isp'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Land',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Land'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Server',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Server'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Standort',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Standort'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Tina VPN',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Tinavpn'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Typ',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Typ'),
+                        'resource' => 'mvc:ipverwaltung-list-view',
+                    ),
+                    array(
+                        'label' => 'Vlan',
+                        'route' => 'ipverwaltung-list-view',
+                        'params' => array('type'=>'Vlan'),
                         'resource' => 'mvc:ipverwaltung-list-view',
                     ),
                 ),
