@@ -9,9 +9,9 @@ return array(
             'ipverwaltung-data-edit' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
-                    'route' => '/edit/:type[:id]',
+                    'route' => '/edit/:type/:id',
                     'constraints' => array(
-                        'type' => '(Accesspoint(Ip)?|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
+                        'type' => '(Accesspoint(Ip)?|Ansprechpartner|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
                         'id'   => '[0-9]+',
                     ),
                     'defaults' => array(
@@ -22,12 +22,26 @@ return array(
                 ),
             ),
 
+            'ipverwaltung-data-add' => array(
+                'type' => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route' => '/add/:type',
+                    'constraints' => array(
+                        'type' => '(Accesspoint(Ip)?|Ansprechpartner|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Ipverwaltung\Controller\Data',
+                        'action' => 'add',
+                    ),
+                ),
+            ),
+
             'ipverwaltung-list-view' => array(
                 'type' => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
                     'route' => '/view[/:type]',
                     'constraints' => array(
-                        'type' => '(Accesspoint(Ip)?|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
+                        'type' => '(Accesspoint(Ip)?|Ansprechpartner|Firewall(Dhcp|Interface(Ip)?|Nat)?|Firma|Ipsec|Isp|Land|Server|Standort|Tinavpn|Typ|Vlan)',
                         'id'   => '[0-9]+',
                     ),
                     'defaults' => array(
