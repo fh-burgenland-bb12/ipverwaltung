@@ -8,7 +8,6 @@ class AccesspointIpInputFilter extends InputFilter
 
     public function __construct()
     {
-        parent::__construct();
 		$this->add(array(
             'name' => 'accesspointIpId',
             'required' => true,

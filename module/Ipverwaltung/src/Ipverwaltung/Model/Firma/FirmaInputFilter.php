@@ -8,7 +8,6 @@ class FirmaInputFilter extends InputFilter
 
     public function __construct()
     {
-        parent::__construct();
 		$this->add(array(
             'name' => 'firmaId',
             'required' => true,

@@ -327,7 +327,6 @@ class $inputFilterName extends InputFilter
 
     public function __construct()
     {
-        parent::__construct();
 
 EOF;
             // Fields

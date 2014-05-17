@@ -8,7 +8,6 @@ class FirewallNatInputFilter extends InputFilter
 
     public function __construct()
     {
-        parent::__construct();
 		$this->add(array(
             'name' => 'firewallId1',
             'required' => true,

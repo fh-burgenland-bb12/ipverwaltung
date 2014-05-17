@@ -8,7 +8,6 @@ class IspInputFilter extends InputFilter
 
     public function __construct()
     {
-        parent::__construct();
 		$this->add(array(
             'name' => 'ispId',
             'required' => true,

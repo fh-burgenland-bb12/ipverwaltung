@@ -8,7 +8,6 @@ class VlanInputFilter extends InputFilter
 
     public function __construct()
     {
-        parent::__construct();
 		$this->add(array(
             'name' => 'vlanId',
             'required' => true,
