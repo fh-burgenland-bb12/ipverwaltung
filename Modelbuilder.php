@@ -393,24 +393,10 @@ EOF;
                 $gen->setArrayDepth(2);
                 //$inputFilterFile .= TAB . TAB . "\$this->add(".var_export($if,true).");\n";
                 $inputFilterFile .= TAB . TAB . "\$this->add(".$gen.");\n";
-
-                /*
-                 *         $this->add(array(
-            'name' => 'proxyIp',
-            'required' => true,
-            'filters' => array(
-                array('name' => 'StripTags'),
-                array('name' => 'StringTrim'),
-            ),
-            'validators' => array(
-                array('name' => 'Ip'),
-            ),
-        ));
-                 */
             }
             $inputFilterFile .= TAB."}\n}\n";
 
-            $files[$dirModel][$tableName . 'InputFilter.php'] = $inputFilterFile;
+            $files[$dirModel][$inputFilterName . '.php'] = $inputFilterFile;
 
         }
 
