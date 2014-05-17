@@ -1,4 +1,7 @@
 <h1><?php echo $this->translate('Add new').' '.$this->listname;?></h1>
 
 <?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('ipverwaltung-data-add', array('type' => $this->type)))->prepare();
+echo $this->form()->render($form);
 ?>
