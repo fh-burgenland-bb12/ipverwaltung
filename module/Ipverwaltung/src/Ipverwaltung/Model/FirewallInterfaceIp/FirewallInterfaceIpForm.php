@@ -11,22 +11,21 @@ class FirewallInterfaceIpForm extends Form
     {
         parent::__construct();		$interfaceId = new Element\Number('interfaceId');
 		$interfaceId->setLabel('InterfaceId');
-		$interfaceId->setAttributes(array (
-  'type' => 'number',
-));
+		$interfaceId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($interfaceId);
 		$ipadresse = new Element\Text('ipadresse');
 		$ipadresse->setLabel('Ipadresse');
-		$ipadresse->setAttributes(array (
-  'type' => 'text',
-));
+		$ipadresse->setAttributes(array('type' => 'text'));
 		$this->add($ipadresse);
 		$vlanId = new Element\Number('vlanId');
 		$vlanId->setLabel('VlanId');
-		$vlanId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$vlanId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($vlanId);
             $send = new Element('submit');
             $send->setLabel('');

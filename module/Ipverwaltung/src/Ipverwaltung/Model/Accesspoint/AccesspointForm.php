@@ -11,42 +11,36 @@ class AccesspointForm extends Form
     {
         parent::__construct();		$accesspointId = new Element\Number('accesspointId');
 		$accesspointId->setLabel('AccesspointId');
-		$accesspointId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$accesspointId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($accesspointId);
 		$name = new Element\Text('name');
 		$name->setLabel('Name');
-		$name->setAttributes(array (
-  'type' => 'text',
-));
+		$name->setAttributes(array('type' => 'text'));
 		$this->add($name);
 		$seriennummer = new Element\Text('seriennummer');
 		$seriennummer->setLabel('Seriennummer');
-		$seriennummer->setAttributes(array (
-  'type' => 'text',
-));
+		$seriennummer->setAttributes(array('type' => 'text'));
 		$this->add($seriennummer);
 		$bemerkung = new Element\Text('bemerkung');
 		$bemerkung->setLabel('Bemerkung');
-		$bemerkung->setAttributes(array (
-  'type' => 'text',
-));
+		$bemerkung->setAttributes(array('type' => 'text'));
 		$this->add($bemerkung);
 		$typId = new Element\Number('typId');
 		$typId->setLabel('TypId');
-		$typId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$typId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($typId);
 		$standortId = new Element\Number('standortId');
 		$standortId->setLabel('StandortId');
-		$standortId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$standortId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($standortId);
             $send = new Element('submit');
             $send->setLabel('');

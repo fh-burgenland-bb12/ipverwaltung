@@ -11,21 +11,21 @@ class FirewallInterfaceForm extends Form
     {
         parent::__construct();		$interfaceId = new Element\Number('interfaceId');
 		$interfaceId->setLabel('InterfaceId');
-		$interfaceId->setAttributes(array (
-  'type' => 'number',
-));
+		$interfaceId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($interfaceId);
 		$firewallId = new Element\Number('firewallId');
 		$firewallId->setLabel('FirewallId');
-		$firewallId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$firewallId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($firewallId);
 		$typ = new Element\Select('typ');
 		$typ->setLabel('Typ');
-		$typ->setAttributes(array (
-));
+		$typ->setAttributes(array());
 		$typ->setValueOptions(array (
   0 => 'extern',
   1 => 'intern',
@@ -33,9 +33,7 @@ class FirewallInterfaceForm extends Form
 		$this->add($typ);
 		$name = new Element\Text('name');
 		$name->setLabel('Name');
-		$name->setAttributes(array (
-  'type' => 'text',
-));
+		$name->setAttributes(array('type' => 'text'));
 		$this->add($name);
             $send = new Element('submit');
             $send->setLabel('');

@@ -11,36 +11,32 @@ class FirewallDhcpForm extends Form
     {
         parent::__construct();		$firewalldhcpId = new Element\Number('firewalldhcpId');
 		$firewalldhcpId->setLabel('FirewalldhcpId');
-		$firewalldhcpId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$firewalldhcpId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($firewalldhcpId);
 		$firewallId = new Element\Number('firewallId');
 		$firewallId->setLabel('FirewallId');
-		$firewallId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$firewallId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($firewallId);
 		$rangebeginn = new Element\Text('rangebeginn');
 		$rangebeginn->setLabel('Rangebeginn');
-		$rangebeginn->setAttributes(array (
-  'type' => 'text',
-));
+		$rangebeginn->setAttributes(array('type' => 'text'));
 		$this->add($rangebeginn);
 		$rangeende = new Element\Text('rangeende');
 		$rangeende->setLabel('Rangeende');
-		$rangeende->setAttributes(array (
-  'type' => 'text',
-));
+		$rangeende->setAttributes(array('type' => 'text'));
 		$this->add($rangeende);
 		$vlanId = new Element\Number('vlanId');
 		$vlanId->setLabel('VlanId');
-		$vlanId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$vlanId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($vlanId);
             $send = new Element('submit');
             $send->setLabel('');

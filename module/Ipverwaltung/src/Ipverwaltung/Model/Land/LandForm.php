@@ -11,22 +11,18 @@ class LandForm extends Form
     {
         parent::__construct();		$landId = new Element\Number('landId');
 		$landId->setLabel('LandId');
-		$landId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$landId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($landId);
 		$iso = new Element\Text('iso');
 		$iso->setLabel('Iso');
-		$iso->setAttributes(array (
-  'type' => 'text',
-));
+		$iso->setAttributes(array('type' => 'text'));
 		$this->add($iso);
 		$bezeichnung = new Element\Text('bezeichnung');
 		$bezeichnung->setLabel('Bezeichnung');
-		$bezeichnung->setAttributes(array (
-  'type' => 'text',
-));
+		$bezeichnung->setAttributes(array('type' => 'text'));
 		$this->add($bezeichnung);
             $send = new Element('submit');
             $send->setLabel('');

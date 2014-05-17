@@ -11,42 +11,36 @@ class ServerForm extends Form
     {
         parent::__construct();		$serverId = new Element\Number('serverId');
 		$serverId->setLabel('ServerId');
-		$serverId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$serverId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($serverId);
 		$ip = new Element\Text('ip');
 		$ip->setLabel('Ip');
-		$ip->setAttributes(array (
-  'type' => 'text',
-));
+		$ip->setAttributes(array('type' => 'text'));
 		$this->add($ip);
 		$name = new Element\Text('name');
 		$name->setLabel('Name');
-		$name->setAttributes(array (
-  'type' => 'text',
-));
+		$name->setAttributes(array('type' => 'text'));
 		$this->add($name);
 		$beschreibung = new Element\Text('beschreibung');
 		$beschreibung->setLabel('Beschreibung');
-		$beschreibung->setAttributes(array (
-  'type' => 'text',
-));
+		$beschreibung->setAttributes(array('type' => 'text'));
 		$this->add($beschreibung);
 		$vlanId = new Element\Number('vlanId');
 		$vlanId->setLabel('VlanId');
-		$vlanId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$vlanId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($vlanId);
 		$standortId = new Element\Number('standortId');
 		$standortId->setLabel('StandortId');
-		$standortId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$standortId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($standortId);
             $send = new Element('submit');
             $send->setLabel('');

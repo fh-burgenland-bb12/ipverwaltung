@@ -11,16 +11,14 @@ class VlanForm extends Form
     {
         parent::__construct();		$vlanId = new Element\Number('vlanId');
 		$vlanId->setLabel('VlanId');
-		$vlanId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$vlanId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($vlanId);
 		$bezeichnung = new Element\Text('bezeichnung');
 		$bezeichnung->setLabel('Bezeichnung');
-		$bezeichnung->setAttributes(array (
-  'type' => 'text',
-));
+		$bezeichnung->setAttributes(array('type' => 'text'));
 		$this->add($bezeichnung);
             $send = new Element('submit');
             $send->setLabel('');

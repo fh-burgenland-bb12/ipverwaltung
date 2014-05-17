@@ -11,30 +11,28 @@ class AccesspointIpForm extends Form
     {
         parent::__construct();		$accesspointIpId = new Element\Number('accesspointIpId');
 		$accesspointIpId->setLabel('AccesspointIpId');
-		$accesspointIpId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$accesspointIpId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($accesspointIpId);
 		$accesspoint = new Element\Number('accesspoint');
 		$accesspoint->setLabel('Accesspoint');
-		$accesspoint->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$accesspoint->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($accesspoint);
 		$ip = new Element\Text('ip');
 		$ip->setLabel('Ip');
-		$ip->setAttributes(array (
-  'type' => 'text',
-));
+		$ip->setAttributes(array('type' => 'text'));
 		$this->add($ip);
 		$vlanId = new Element\Number('vlanId');
 		$vlanId->setLabel('VlanId');
-		$vlanId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$vlanId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($vlanId);
             $send = new Element('submit');
             $send->setLabel('');

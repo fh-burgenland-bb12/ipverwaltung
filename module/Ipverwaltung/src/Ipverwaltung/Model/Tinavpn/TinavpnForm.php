@@ -11,23 +11,21 @@ class TinavpnForm extends Form
     {
         parent::__construct();		$firewall1 = new Element\Number('firewall1');
 		$firewall1->setLabel('Firewall1');
-		$firewall1->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$firewall1->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($firewall1);
 		$firewall2 = new Element\Number('firewall2');
 		$firewall2->setLabel('Firewall2');
-		$firewall2->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$firewall2->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($firewall2);
 		$name = new Element\Text('name');
 		$name->setLabel('Name');
-		$name->setAttributes(array (
-  'type' => 'text',
-));
+		$name->setAttributes(array('type' => 'text'));
 		$this->add($name);
             $send = new Element('submit');
             $send->setLabel('');

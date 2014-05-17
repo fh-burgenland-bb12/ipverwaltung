@@ -11,29 +11,25 @@ class IpsecForm extends Form
     {
         parent::__construct();		$ipsecId = new Element\Number('ipsecId');
 		$ipsecId->setLabel('IpsecId');
-		$ipsecId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$ipsecId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($ipsecId);
 		$firewallId = new Element\Number('firewallId');
 		$firewallId->setLabel('FirewallId');
-		$firewallId->setAttributes(array (
-  'type' => 'number',
-  'min' => '0',
-));
+		$firewallId->setAttributes(array(
+                'type' => 'number',
+                'min' => '0'
+                ));
 		$this->add($firewallId);
 		$ip = new Element\Text('ip');
 		$ip->setLabel('Ip');
-		$ip->setAttributes(array (
-  'type' => 'text',
-));
+		$ip->setAttributes(array('type' => 'text'));
 		$this->add($ip);
 		$bemerkung = new Element\Text('bemerkung');
 		$bemerkung->setLabel('Bemerkung');
-		$bemerkung->setAttributes(array (
-  'type' => 'text',
-));
+		$bemerkung->setAttributes(array('type' => 'text'));
 		$this->add($bemerkung);
             $send = new Element('submit');
             $send->setLabel('');
