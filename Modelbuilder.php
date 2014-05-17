@@ -92,6 +92,7 @@ class ModelBuilder {
             $modelInterfaceName = $modelName . 'Interface';
             $tableName = $modelName . 'Table';
             $formName = $modelName . 'Form';
+            $inputFilterName = $modelName . 'InputFilter';
             $dirModel = 'module'. DIRECTORY_SEPARATOR . $this->module . DIRECTORY_SEPARATOR . 'src' .
                 DIRECTORY_SEPARATOR . $this->module . DIRECTORY_SEPARATOR .
                 'Model' . DIRECTORY_SEPARATOR . $modelName;
@@ -246,6 +247,7 @@ EOF;
                     $elclass = "Element\\Number";
                     $attr['type'] = 'number';
                     $attr['min'] = '0';
+
                 }
                 elseif (strpos($col->getDatatype(),'int') !== false)
                 {
@@ -262,7 +264,10 @@ EOF;
 
                 $formFile .= TAB . TAB . "\$${colName} = new $elclass('$colName');\n";
                 $formFile .= TAB . TAB . "\$${colName}->setLabel('$colFuncName');\n";
-                $formFile .= TAB . TAB . "\$${colName}->setAttributes(".var_export($attr,true).");\n";
+
+                $gen = new \Zend\Code\Generator\ValueGenerator($attr);
+                $gen->setArrayDepth(3);
+                $formFile .= TAB . TAB . "\$${colName}->setAttributes(".$gen.");\n";
                 if($add)
                 {
                     $formFile .= TAB . TAB . $add;
@@ -309,8 +314,108 @@ EOF;
 
 
             $files[$dirModel][$tableName . '.php'] = $tableFile;
+
+
+            $inputFilterFile = <<<EOF
+<?php
+
+namespace {$this->module}\Model\\$modelName;
+use Zend\InputFilter\InputFilter;
+
+class $inputFilterName extends InputFilter
+{
+
+    public function __construct()
+    {
+        parent::__construct();
+
+EOF;
+            // Fields
+            foreach ($t->getColumns() as $col) {
+                $colName = $this->toCamelCase($col->getName());
+                $colName[0] = strtolower($colName[0]);
+
+                $if = array('name'=>$colName);
+                $if['required'] = $col->isNullable()?false:true;
+                $if['filters'] = array();
+                $if['validators'] = array();
+                if($col->getDatatype() == 'varchar' || $col->getDatatype() == 'char')
+                {
+
+                    $if['filters'][] = array('name' => 'StripTags');
+                    $if['filters'][] = array('name' => 'StringTrim');
+                    $if['filters'][] = array('name' => 'Digits');
+                    $if['validators'][]=array('name' => 'StringLength', 'options' => array('min' => 0, 'max' => $col->getCharacterMaximumLength()));
+                }
+                elseif (strpos($col->getDatatype(),'int') !== false)
+                {
+                    $if['filters'][] = array('name' => 'StripTags');
+                    $if['filters'][] = array('name' => 'StringTrim');
+                    $if['filters'][] = array('name' => 'Digits');
+                    $if['validators'][]=array('name' => 'Digits');
+
+                    if($col->isNumericUnsigned())
+                    {
+                        if($col->getDatatype()=='tinyint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => 0, 'max' => 255));
+                        elseif($col->getDatatype()=='smallint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => 0, 'max' => 65535));
+                        elseif($col->getDatatype()=='mediumint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => 0, 'max' => 16777215));
+                        elseif($col->getDatatype()=='int') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => 0, 'max' => 4294967295));
+                        elseif($col->getDatatype()=='bigintint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => 0, 'max' => 18446744073709551615));
+                    }
+                    else
+                    {
+                        if($col->getDatatype()=='tinyint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => -127, 'max' => 127));
+                        elseif($col->getDatatype()=='smallint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => -32767, 'max' => 32767));
+                        elseif($col->getDatatype()=='mediumint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => -8388607, 'max' => 8388607));
+                        elseif($col->getDatatype()=='int') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => -2147483647, 'max' => 2147483647));
+                        elseif($col->getDatatype()=='bigintint') $if['validators'][]=array('name' => 'Between', 'options' => array('min' => -9223372036854775807, 'max' => 9223372036854775807));
+                    }
+                }
+                elseif (strpos(strtolower($col->getDatatype()),'enum') !== false)
+                {
+                    $if['filters'][] = array('name' => 'StripTags');
+                    $if['filters'][] = array('name' => 'StringTrim');
+                    $if['filters'][] = array('name' => 'Digits');
+                    $if['validators'][]=array('name' => 'InArray', 'options' => array('haystack'=>$col->getErrata('permitted_values')));
+                }
+                elseif (strpos(strtolower($col->getDatatype()),'enum') !== false)
+                {
+                    $if['filters'][] = array('name' => 'StripTags');
+                    $if['filters'][] = array('name' => 'StringTrim');
+                    $if['validators'][]=array('name' => 'Date', 'format' => '%Y-%m-%d');
+                }
+
+                if(strpos(strtolower($colName),'ip')!==NULL && strpos($colName,'Id')===NULL)
+                {
+                    $if['validators'][] = array('name' => 'Ip');
+                }
+                $gen = new \Zend\Code\Generator\ValueGenerator($if);
+                $gen->setArrayDepth(2);
+                //$inputFilterFile .= TAB . TAB . "\$this->add(".var_export($if,true).");\n";
+                $inputFilterFile .= TAB . TAB . "\$this->add(".$gen.");\n";
+
+                /*
+                 *         $this->add(array(
+            'name' => 'proxyIp',
+            'required' => true,
+            'filters' => array(
+                array('name' => 'StripTags'),
+                array('name' => 'StringTrim'),
+            ),
+            'validators' => array(
+                array('name' => 'Ip'),
+            ),
+        ));
+                 */
+            }
+            $inputFilterFile .= TAB."}\n}\n";
+
+            $files[$dirModel][$tableName . 'InputFilter.php'] = $inputFilterFile;
+
         }
 
+
+//        exit();
         return $files;
     }
 
